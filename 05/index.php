@@ -126,6 +126,10 @@ $products = [
             [
                 "name" => "Display",
                 "value" => "5,5"
+            ],
+            [
+                "name" => "Camera",
+                "value" => "12Mpx"
             ]
         ]
     ],
@@ -140,7 +144,27 @@ $products = [
             [
                 "name" => "Display",
                 "value" => "5,2"
+            ],
+            [
+                "name" => "Memory",
+                "value" => "128GB"
             ]
         ]
     ]
 ];
+?>
+<?php foreach($products as $product):?>
+    <h4><?=$product["name"]?>: <span><?=$product["price"]?></span>$</h4>
+    <div>Properties:</div>
+    <?php if(count($product["properties"]) > 0):?>
+        <ul>
+            <?php foreach($product["properties"] as $property):?>
+                <li>
+                    <strong><?=$property["name"]?>:</strong>
+                    <?=$property["value"]?>
+                </li>
+            <?php endforeach;?>
+        </ul>
+    <?php endif;?>
+    <hr>
+<?php endforeach;?>
