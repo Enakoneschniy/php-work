@@ -33,16 +33,21 @@
 
             switch ($_REQUEST['operation']) {
                 case '+':
-                    # code...
+                    echo "$a + $b = ", $a + $b;
                     break;
                 case '-':
-                    # code...
+                    echo "$a - $b = ", $a - $b;
                     break;
                 case '*':
-                    # code...
+                    echo "$a * $b = ", $a * $b;
                     break;
                 case '/':
-                    # code...
+                    if($b == 0){
+                        echo "Error: Devide by zero!";
+                    }else{
+                        echo "$a / $b = ", $a / $b;
+                    }
+                    
                     break;
                 
                 default:
