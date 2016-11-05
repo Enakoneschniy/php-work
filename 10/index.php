@@ -1,32 +1,43 @@
 <?php
+
 //рекурсия
-    $n = 3;
+$n = 3;
 $res = 1;
-for($i = 1; $i <= $n; $i++){
+for ($i = 1; $i <= $n; $i++) {
     $res *= $i;
 }
 var_dump($res);
 
-function fact($n){
-    if($n == 1){
+/**
+ * Factorial of number
+ * @param  int $n number
+ * @return int factorial $n
+ */
+
+function fact($n)
+{
+    if ($n == 1) {
         return 1;
-    }else{
+    } else {
         return $n * fact($n - 1);
     }
 }
+for
 
 $rec = fact(5);
 var_dump($rec);
 
 echo "<hr>";
-function fibonacci($n){
+
+function fibonacci($n)
+{
     if ($n < 3) {
         return 1;
-    }
-    else {
+    } else {
         return fibonacci($n-1) + fibonacci($n-2);
     }
 }
+
 for ($n = 1; $n <= 16; $n++) {
     echo(fibonacci($n) . ", ");
 }
@@ -42,9 +53,11 @@ $array = [12,34,45,67];
 $handle = fopen('text.txt', 'r+');
 
 $file_content = '';
-while(!feof($handle)){
+
+while (!feof($handle)) {
     $file_content .= fgets($handle);
 }
+
 fclose($handle);
 $file_content = str_replace(' ', '&nbsp;', $file_content);
 echo nl2br($file_content);
@@ -67,4 +80,5 @@ $json = json_encode($array);
 file_put_contents('text.txt', $json);
 $res = file_get_contents('text.txt');
 var_dump($res);
+
 var_dump(json_decode($res));
