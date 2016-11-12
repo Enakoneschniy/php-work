@@ -22,7 +22,7 @@ function fact($n)
         return $n * fact($n - 1);
     }
 }
-for
+
 
 $rec = fact(5);
 var_dump($rec);
