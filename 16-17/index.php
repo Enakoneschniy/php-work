@@ -2,7 +2,8 @@
 ini_set('display_errors', 1);
 include_once 'init.php';
 $storage = new Storage('reviewStorage.txt');
-$storage->add(new Review('Evgeniy', 'lorem ipsum'));
+//$storage->add(new Review('Evgeniy', 'lorem ipsum'));
+var_dump($storage->all());
 ?>
 <!DOCTYPE html>
 <html lang="ru">

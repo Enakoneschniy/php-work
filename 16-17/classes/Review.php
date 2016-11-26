@@ -1,12 +1,14 @@
 <?php
 
 class Review {
-    private $name = "";
-    private $text = "";
+    private $name = '';
+    private $text = '';
+    private $date = '';
 
     public function __construct($name, $text){
         $this->name = $name;
         $this->text = $text;
+        $this->date = time();
     }
 
     public function __get($propName){
