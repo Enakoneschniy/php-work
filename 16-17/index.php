@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 include_once 'init.php';
 $storage = new Storage('reviewStorage.txt');
 //$storage->add(new Review('Evgeniy', 'lorem ipsum'));
-var_dump($storage->all());
+//var_dump($storage->all());
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -43,24 +43,14 @@ var_dump($storage->all());
 
     <div class="reviews">
         <h2 class="center-block">Все отзывы:</h2>
-        <div class="panel panel-primary">
-            <div class="panel-heading">#1 Евгений Геннадиевич</div>
-            <div class="panel-body">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias amet asperiores at blanditiis culpa cupiditate dolores fugiat harum ipsam molestias nesciunt odio, perspiciatis quo rerum suscipit veniam voluptatibus voluptatum. Provident?
+        <?php foreach ($storage->all() as $review):?>
+            <div class="panel panel-primary">
+                <div class="panel-heading"><?=$review->name?> <strong><?=date('[d.m.Y H:i:s]', $review->date)?></strong></div>
+                <div class="panel-body">
+                    <?=$review->text?>
+                </div>
             </div>
-        </div>
-        <div class="panel panel-primary">
-            <div class="panel-heading">#2 Евгений Геннадиевич</div>
-            <div class="panel-body">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias amet asperiores at blanditiis culpa cupiditate dolores fugiat harum ipsam molestias nesciunt odio, perspiciatis quo rerum suscipit veniam voluptatibus voluptatum. Provident?
-            </div>
-        </div>
-        <div class="panel panel-primary">
-            <div class="panel-heading">#4 Евгений Геннадиевич</div>
-            <div class="panel-body">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias amet asperiores at blanditiis culpa cupiditate dolores fugiat harum ipsam molestias nesciunt odio, perspiciatis quo rerum suscipit veniam voluptatibus voluptatum. Provident?
-            </div>
-        </div>
+        <?php endforeach;?>
     </div>
     <nav>
         <ul class="pagination">
