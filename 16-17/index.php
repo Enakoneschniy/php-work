@@ -1,5 +1,8 @@
 <?php
+ini_set('display_errors', 1);
 include_once 'init.php';
+$storage = new Storage('reviewStorage.txt');
+$storage->add(new Review('Evgeniy', 'lorem ipsum'));
 ?>
 <!DOCTYPE html>
 <html lang="ru">

@@ -18,10 +18,12 @@ class Storage {
     }
 
     public function save(){//save review to file
-
+        $handle = fopen($_SERVER['DOCUMENT_ROOT'].'/16-17/'.$this->storagePath, 'w+');
+        fwrite($handle, serialize($this->list));
+        fclose($handle);
     }
 
     public function load(){//load reviews from file
-
+        $this->list = unserialize(file_get_contents($this->storagePath));
     }
 }
