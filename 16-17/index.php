@@ -2,8 +2,7 @@
 ini_set('display_errors', 1);
 include_once 'init.php';
 $storage = new Storage('reviewStorage.txt');
-//$storage->add(new Review('Evgeniy', 'lorem ipsum'));
-//var_dump($storage->all());
+include_once 'add-review.php';
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -35,15 +34,15 @@ $storage = new Storage('reviewStorage.txt');
             <input type="text" class="form-control" name="name" id="name"  required>
         </div>
         <div class="form-group">
-            <label for="review">Текст Озыва</label>
-            <textarea class="form-control" name="review" id="review" rows="5"></textarea>
+            <label for="review">Текст Отзыва</label>
+            <textarea class="form-control" name="text" id="review" rows="5" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Отправить</button>
+        <input type="submit" class="btn btn-primary btn-block" name="add" value="Отправить">
     </form>
 
     <div class="reviews">
-        <h2 class="center-block">Все отзывы:</h2>
-        <?php foreach ($storage->all() as $review):?>
+        <h2 class="center-block">Все отзывы (<?=count($storage->all())?>):</h2>
+        <?php foreach ($storage->paginate(2) as $review):?>
             <div class="panel panel-primary">
                 <div class="panel-heading"><?=$review->name?> <strong><?=date('[d.m.Y H:i:s]', $review->date)?></strong></div>
                 <div class="panel-body">
@@ -53,6 +52,7 @@ $storage = new Storage('reviewStorage.txt');
         <?php endforeach;?>
     </div>
     <nav>
+        <?=$storage->links()?>
         <ul class="pagination">
             <li>
                 <a href="#" aria-label="Previous">
@@ -60,10 +60,10 @@ $storage = new Storage('reviewStorage.txt');
                 </a>
             </li>
             <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
+            <li><a href="?page=2">2</a></li>
+            <li><a href="?page=3">3</a></li>
+            <li><a href="?page=4">4</a></li>
+            <li><a href="?page=5">5</a></li>
             <li>
                 <a href="#" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>

@@ -3,6 +3,7 @@
 class Storage {
     private $list = [];
     private $storagePath = '';
+    private $pages = 1;
 
     public function __construct($storagePath){
         $this->storagePath = $storagePath;
@@ -51,5 +52,19 @@ class Storage {
             }
         });//sort by props
         return $this->list;
+    }
+
+    /**
+     * @param $count - количество отзывов на странице
+     */
+    public function paginate($count){//постраничная навигация
+        $arrPages = array_chunk($this->list, $count);
+        $this->pages = count($arrPages);
+        echo $_REQUEST['page'];
+        return $arrPages[$_REQUEST['page'] - 1];//0 - заменить на переменную с request
+    }
+
+    public function links(){//вывод кнопок постраничной навигации
+        echo "";
     }
 }
