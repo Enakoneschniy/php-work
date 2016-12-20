@@ -1,5 +1,6 @@
 <?php
 include_once 'init.php';
+var_dump($_COOKIE);
 $user1 = new User('Vasya', 'vasya@gmail.com', '+380958976543');
 echo $user1->email, '<br>';
 echo $user1->phone, '<br>';
